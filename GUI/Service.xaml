@@ -1,0 +1,39 @@
+﻿<Window x:Class="GUI.Service"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        Title="Service" Height="600" Width="1024" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="227*"/>
+            <ColumnDefinition Width="226*"/>
+            <ColumnDefinition Width="56*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Left" Margin="400,462,0,0" VerticalAlignment="Top" Width="165" Height="42" FontSize="20" FontWeight="Bold" Background="#45B656" BorderBrush="Black" Foreground="Black" Cursor="Hand" OpacityMask="Black" Click="btnSubmit_Click" Grid.ColumnSpan="2"/>
+        <Label Content="Process service" HorizontalAlignment="Left" Margin="33,363,0,0" VerticalAlignment="Top" FontSize="20" Background="White" FontWeight="Bold" Foreground="Black"/>
+        <Label Content="Search service:" HorizontalAlignment="Left" Margin="233,60,0,0" VerticalAlignment="Top" FontSize="20" Background="White" Width="152" RenderTransformOrigin="0.832,-0.253" Foreground="Black"/>
+        <ListView x:Name="servicesListView" HorizontalAlignment="Left" Height="187" Margin="38,129,0,0" VerticalAlignment="Top" Width="944" SelectionChanged="serviceSelectionChanged" Grid.ColumnSpan="3" Cursor="Hand">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="List of services" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Margin="56,124,0,0"/>
+        <TextBox x:Name="txtSearchService" HorizontalAlignment="Left" Height="37" Margin="410,62,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="310" FontSize="20" Background="#F0F0EF" Foreground="Black" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="336,57,0,0" VerticalAlignment="Top" Width="158" Height="42" FontSize="20" FontWeight="Bold" Background="#45B656" BorderBrush="Black" Foreground="Black" Cursor="Hand" Grid.Column="1" Grid.ColumnSpan="2" Click="btnSearch_Click"/>
+        <Label Content="Service" HorizontalAlignment="Left" Margin="38,30,0,0" VerticalAlignment="Top" FontSize="20" Background="White" FontWeight="Bold" Foreground="Black"/>
+        <TextBox x:Name="txtNum1" HorizontalAlignment="Left" Height="28" Margin="182,424,0,0" TextWrapping="Wrap" Background="#F0F0EF" VerticalAlignment="Top" Width="137"/>
+        <Label x:Name="lServiceSelected" Content="" HorizontalAlignment="Left" Margin="334,363,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="350" Height="36" FontSize="18" FontWeight="Bold"/>
+        <Label Content="Number 1: " HorizontalAlignment="Left" Margin="93,426,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.948,0.383"/>
+        <TextBox x:Name="txtNum2" HorizontalAlignment="Left" Height="28" Margin="182,468,0,0" Background="#F0F0EF" TextWrapping="Wrap" VerticalAlignment="Top" Width="137"/>
+        <Label x:Name="lNum2" Content="Number 2: " HorizontalAlignment="Left" Margin="93,470,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.948,0.383"/>
+        <TextBox x:Name="txtNum3" HorizontalAlignment="Left" Height="28" Margin="182,515,0,0" Background="#F0F0EF" TextWrapping="Wrap" VerticalAlignment="Top" Width="137"/>
+        <Label x:Name="lNum3" Content="Number 3: " HorizontalAlignment="Left" Margin="93,517,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.948,0.383"/>
+        <Label Content="Value: " HorizontalAlignment="Left" Margin="169,468,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.948,0.383" Grid.Column="1"/>
+        <Label x:Name="lValue" Content="" HorizontalAlignment="Left" Margin="227,465,0,0" VerticalAlignment="Top" Background="#F0F0EF" RenderTransformOrigin="0.948,0.383" Grid.Column="1" Width="210" Height="34" FontSize="14" FontWeight="Bold"/>
+    </Grid>
+</Window>
