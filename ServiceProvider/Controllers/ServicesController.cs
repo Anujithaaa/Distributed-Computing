@@ -11,7 +11,7 @@ namespace ServiceProvider.Controllers
 {
     public class ServicesController : ApiController
     {
-        // HTTPGet method for adding 2 numbers
+        // HTTPGet method - ADDTwoNumbers
         [HttpGet]
         [Route("add2Number/{num1}/{num2}")]
         public int ADDTwoNumbers(int num1, int num2)
@@ -23,7 +23,7 @@ namespace ServiceProvider.Controllers
         }
 
 
-        // HTTPGet method for adding 3 numbers
+        // HTTPGet method - ADDThreeNumbers
         [HttpGet]
         [Route("add3Number/{num1}/{num2}/{num3}")]
         public int ADDThreeNumbers(int num1, int num2, int num3)
@@ -35,7 +35,7 @@ namespace ServiceProvider.Controllers
         }
 
 
-        // HTTPGet method for multiplying 2 numbers
+        // HTTPGet method - MulTwoNumbers
         [HttpGet]
         [Route("multi2Number/{num1}/{num2}")]
         public int MulTwoNumbers(int num1, int num2)
@@ -47,7 +47,7 @@ namespace ServiceProvider.Controllers
         }
 
 
-        // HTTPGet method for multiplying 3 numbers
+        // HTTPGet method - MulThreeNumbers
         [HttpGet]
         [Route("mult3Number/{num1}/{num2}/{num3}")]
         public int MulThreeNumbers(int num1, int num2, int num3)
