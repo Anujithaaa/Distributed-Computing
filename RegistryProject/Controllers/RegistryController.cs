@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Authenticator;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RegistryProject.Models;
 using System;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
+using System.ServiceModel;
 using System.Text;
 using System.Web.Http;
 
@@ -17,6 +19,19 @@ namespace RegistryProject.Controllers
 {
     public class RegistryController : ApiController
     {
+       
+        Authenticator.AuthenticatorInterface foob;
+        public RegistryController()
+        {
+
+            ChannelFactory<Authenticator.AuthenticatorInterface> foobFactory;
+            NetTcpBinding tcp = new NetTcpBinding();
+            string URL = "net.tcp://localhost:50001/AuthenticationService";
+
+            foobFactory = new ChannelFactory<Authenticator.AuthenticatorInterface>(tcp, URL);
+            foob = foobFactory.CreateChannel();
+        }
+
         [HttpPost]
         [Route("publish/{num1}")]
         public string Publish()
@@ -130,6 +145,64 @@ namespace RegistryProject.Controllers
             }
 
             return text;
+        }
+
+
+        [Route("deleteService/{ApiEndpoint}/{token}")]
+        [HttpDelete]
+
+        public IHttpActionResult deleteAllServices(string apiEndpoint, int token)
+        {
+            string returnResult = foob.validate(token);
+            string textFilePath = @"F:\DC assignment 1\serviceDescription.txt";
+            string appendJson = "";
+
+
+
+            if (returnResult.Equals("validated"))
+            {
+
+                using (var sr = new StreamReader(textFilePath))
+                {
+                    string line;
+                    var index = 0;
+                    string lineAll = sr.ReadToEnd();
+
+                    List<serviceInputModel> serveReg = JsonConvert.DeserializeObject<List<serviceInputModel>>(lineAll);
+
+                    List<serviceInputModel> newServiceList = new List<serviceInputModel>();
+
+                    foreach (serviceInputModel serveList in serveReg)
+                    {
+                        if (!serveList.ApiEndpoint.Contains(apiEndpoint))
+                        {
+
+
+                            newServiceList.Add(serveList);
+
+
+
+                        }
+
+
+
+
+
+                    }
+                    appendJson = JsonConvert.SerializeObject(newServiceList, Formatting.Indented);
+
+                }
+                File.WriteAllText(textFilePath, appendJson.ToString());
+                return Ok();
+            }
+            else
+            {
+
+                return Ok("{“Status”: “Denied”,“Reason”: “Authentication Error”}");
+            }
+
+
+
         }
 
 

@@ -121,7 +121,7 @@ namespace GUI
 
             var jsonData = JsonConvert.SerializeObject(sname);
             var data = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("https://localhost:44389/unpublish/{0}", data);
+            var response = await client.PostAsync($"https://localhost:44392/deleteService/{sname}/791225721", data);
 
             List<string> filteredServices = new List<string>();
 
