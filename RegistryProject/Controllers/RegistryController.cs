@@ -176,17 +176,9 @@ namespace RegistryProject.Controllers
                     {
                         if (!serveList.ApiEndpoint.Contains(apiEndpoint))
                         {
-
-
                             newServiceList.Add(serveList);
 
-
-
                         }
-
-
-
-
 
                     }
                     appendJson = JsonConvert.SerializeObject(newServiceList, Formatting.Indented);
